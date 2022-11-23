@@ -9,6 +9,34 @@
 body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
+  overflow: hidden;
+}
+body::before {
+  content: "";
+  position:absolute;
+  top:0px;
+  left:0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background: url(https://cutewallpaper.org/27/chat-background-wallpaper-hd/telegram-chat-backgroundspatterns-extracted-%E2%80%94-1a23-blog.png);
+  background-size: cover;
+  background-position: center;
+  animation: grow 3s infinite; animation-delay: 2s;
+  overflow: hidden;
+}
+body::after {
+  content: "";
+  position:absolute;
+  top:0px;
+  left:0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.644), #191818);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 
 a {
@@ -37,9 +65,9 @@ h3 {
 
 .container {
   width: 100%;
-  max-width: 960px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 8px;
   text-align: center;
 }
 
@@ -47,9 +75,17 @@ h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px solid #e6e6e6;
-  margin-bottom: 60px;
+  margin-bottom: 60px !important;
+  background: linear-gradient(rgb(29 20 48 / 65%), rgb(64 36 85));
+  border-radius: 7px;
+  margin-top: 0.6% !important;
+  padding: 10px;
+  margin: 0 auto;
+  max-width: 100%;
+  border: 2px solid rgb(70 70 70 / 20%);
+  margin-top: -4px !important;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
 }
 
 .header ul {
@@ -65,10 +101,12 @@ h3 {
 .header ul li a {
   display: flex;
   align-items: center;
+  color: white;
+  font-weight: 600;
 }
 
 .header ul li a:hover {
-  color: #777;
+  color: Silver;
 }
 
 .header ul li a svg {
@@ -78,7 +116,7 @@ h3 {
 .heading {
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 50px;
+  margin-bottom: 22px;
   padding: 0 20px;
 }
 
@@ -93,19 +131,25 @@ h3 {
 }
 
 .goal {
-  background-color: #f4f4f4;
+  background-color: rgb(112 33 167 / 80%);
   margin: 10px 0;
   padding: 20px 0 10px;
   position: relative;
+  border-radius: 5px;
+  color: silver;
 }
 
 .goal .close {
   position: absolute;
-  top: 10px;
-  right: 15px;
+  top: 5px;
+  right: 4px;
   cursor: pointer;
   border: none;
-  background: none;
+  background: rgb(32 32 32 / 40%);
+  color: goldenrod;
+  font-size: 9px;
+  border-radius: 4px;
+  padding: 3px;
 }
 
 .form,
@@ -123,7 +167,7 @@ h3 {
 .form-group select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #e6e6e6;
+  border: 1px solid #b062c4;
   border-radius: 5px;
   margin-bottom: 10px;
   font-family: inherit;
@@ -137,9 +181,9 @@ h3 {
 
 .btn {
   padding: 10px 20px;
-  border: 1px solid #000;
+  border: 1px solid #08a948;
   border-radius: 5px;
-  background: #000;
+  background: #34b166;
   color: #fff;
   font-size: 16px;
   font-weight: 700;
@@ -213,3 +257,192 @@ h3 {
     font-size: 1.5rem;
   }
 }
+
+/* new css */
+
+section.AuthContainer {
+  padding: 1%;
+  background: linear-gradient(rgb(29 20 48 / 65%), rgb(64 36 85));
+  border-radius: 7px;
+  max-width: 30%;
+  margin: 0 auto;
+  box-shadow: 0px 0px 15px rgb(70 37 79);
+  border: 2px solid rgba(70,70,70,0.20);
+}
+p.loginDesc {
+  color: antiquewhite !important;
+}
+h1.loginHeader {
+  color: antiquewhite;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+h1.loginHeader>svg {
+  margin-right: 10px;
+  color: darkcyan;
+}
+
+.logo>a {
+  color: white;
+  font-weight: 600;
+  font-size: 22px;
+  transition: 0.3s all;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+.logo>a:hover {
+  color: aliceblue;
+  font-weight: 600;
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+  transition: 0.3s all;
+}
+
+input {
+  background: rgb(56 56 56 / 32%);
+  color: white;
+  border: 1px solid #9602d9 !important;
+}
+
+.mainContainer {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.adContainer {
+  margin-right: 5%;
+  margin-left: 5%;
+}
+p.adInfo {
+  color: silver;
+}
+.AdvertisementImage {
+  padding: 5px;
+  background: rgb(30 30 30 / 60%);
+  display: flex;
+  border-radius: 4px;
+  flex-direction: column;
+  color: silver;
+}
+p.advertisementInfo {
+  font-variant: all-petite-caps;
+}
+img {
+  border-radius: 4px;
+}
+
+h1.welcomeMHeader {
+  font-size: 36px;
+  color: antiquewhite;
+}
+
+.createGoalLabel {
+  color: white;
+  text-align-last: center;
+}
+.noGoalsLabel {
+  color: white;
+  text-align-last: center;
+}
+
+.goalDate {
+  font-size: 12px;
+  margin-top: -15px;
+  float: left;
+  margin-left: 8px;
+  color: gold;
+}
+
+h2.goalText {
+  margin-bottom: 4px;
+  margin-top: 10px;
+  font-size: 14px;
+  text-shadow: 0px 0px 10px rgb(0 0 0 / 40%);
+}
+
+button.logoutBtn.btn {
+  background: transparent;
+  border: 0px solid white;
+  margin-right: -8px !important;
+}
+
+span.logoFa {
+  display: flex;
+  margin-right: 5px;
+  color: pink;
+}
+
+section.goalContent.content {
+  width: 92%;
+}
+
+@media only screen and (max-width: 600px) {
+  .mainContainer {
+    display: block;
+  }
+  section.AuthContainer {
+    max-width: 88%;
+  }
+  body {
+    overflow: visible;
+  }
+  .header {
+    margin-bottom: 15px !important;
+  }
+  .AdvertisementImage {
+    padding: 5px;
+    background: rgb(30 30 30 / 60%);
+    display: flex;
+    border-radius: 4px;
+    flex-direction: column;
+    color: silver;
+    max-width: 170px;
+    height: auto;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+body::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 130vh;
+  z-index: -2;
+  background: url(https://cutewallpaper.org/27/chat-background-wallpaper-hd/telegram-chat-backgroundspatterns-extracted-%E2%80%94-1a23-blog.png);
+  background-size: cover;
+  background-position: center;
+  animation: grow 3s infinite;
+  animation-delay: 2s;
+  overflow: hidden;
+}
+body::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 130vh;
+  z-index: -1;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.644), #191818);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.goalDate {
+  font-size: 10px;
+  margin-top: -15px;
+  float: left;
+  margin-left: 4px;
+  color: gold;
+}
+}
+
+/* KEYFRAMES */
+@keyframes slide { 0% { transform: translateX(0em); } 50% { transform: translateX(1em); } 100% { transform: translateX(0em); } }
+@keyframes grow { 0% { transform: scale(1.0); } 50% { transform: scale(1.01) } 100% { transform: scale(1.0); } }

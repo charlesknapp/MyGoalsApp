@@ -1,99 +1,157 @@
-import {useState, useEffect} from 'react'
-import {FaUser} from 'react-icons/fa'
-import {useSelector, useDispatch} from 'react-redux'
-import {useNavigate} from 'react-router-dom'
-import {toast} from 'react-toastify'
-import {register, reset} from '../features/auth/authSlice'
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { FaUser } from 'react-icons/fa'
+import { register, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
 
 function Register() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        password: '',
-        password2: ''
-    })
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    password2: '',
+  })
 
-    const {name, email, password, password2} = formData
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
+  const { name, email, password, password2 } = formData
 
-    const {user, isLoading, isError, isSuccess, message} = useSelector( (state) => state.auth)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-    useEffect(() => {
-        if(isError) {
-            toast.error(message)
-        }
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
 
-        if(isSuccess || user) {
-            navigate('/')
-        }
-
-        dispatch(reset())
-
-    }, [user, isError, isSuccess, message, navigate, dispatch])
-
-    // Handles the state change for the form data (allow you to type in info)
-    const onChange = (e) => {
-        setFormData((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value
-        }))
+  useEffect(() => {
+    if (isError) {
+      toast.dark(message, {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
     }
 
-    // On submit event
-    const onSubmit = (e) => {
-        e.preventDefault()
-
-        if (password !== password2) {
-            toast.error('Passwords do not match')
-        }
-        else {
-            const userData = {
-                name,
-                email,
-                password,
-            }
-
-            dispatch(register(userData))
-        }
+    if (isSuccess ^ user) {
+      navigate('/')
+      toast.dark("Account created", {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
     }
 
-    if (isLoading) {
-        return <Spinner />
+    dispatch(reset())
+  }, [user, isError, isSuccess, message, navigate, dispatch])
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    if (password !== password2) {
+      toast.dark("Passwords do not match", {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
+    } else {
+      const userData = {
+        name,
+        email,
+        password,
+      }
+
+      dispatch(register(userData))
     }
+  }
+
+  if (isLoading) {
+    return <Spinner />
+  }
 
   return (
     <>
-    <section class="heading">
-        <h1>
-            <FaUser /> Register
-        </h1>
-        <p>Create your account today</p>
-    </section>
-    <section class="form">
-        <form onSubmit={onSubmit}>
-            <div className="form-group">
-            <input type="text" className="form-control" id="name" name="name" value={name} placeholder="Enter your full name" onChange={onChange}/>
-            </div>
+  <div class="mainContainer">
+    <div class="adContainer">
+      <div class="AdvertisementImage">
+      <p class="advertisementInfo">Sponsored Advertisement</p>
+        <img src="https://s3.envato.com/files/60224096/PNG/Marketing%20Banner%20ad%202%20250x250.png" alt="Advertisement" />
+      </div>
+    </div>
 
-            <div className="form-group">
-            <input type="email" className="form-control" id="email" name="email" value={email} placeholder="Enter your email address" onChange={onChange}/>
-            </div>
+    <section class="AuthContainer">
+      <section class='heading'>
+        {/* <h1 class="loginHeader">
+          <FaUser /> Register
+        </h1> */}
+        <p class="loginDesc">Please create an account</p>
+      </section>
 
-            <div className="form-group">
-            <input type="password" className="form-control" id="password" name="password" value={password} placeholder="Enter a secure password" onChange={onChange}/>
-            </div>
-
-            <div className="form-group">
-            <input type="password" className="form-control" id="password2" name="password2" value={password2} placeholder="Confirm your password" onChange={onChange}/>
-            </div>
-            
-            <div className="form-group">
-                <button type="submit" class="btn btn-block">Submit</button>
-            </div>
+      <section class='form'>
+        <form autocomplete="off" onSubmit={onSubmit}>
+          <div class='form-group'>
+            <input
+              type='text'
+              class='form-control'
+              id='name'
+              name='name'
+              value={name}
+              placeholder='Enter your name'
+              onChange={onChange}
+              autocomplete="off"
+            />
+          </div>
+          <div class='form-group'>
+            <input
+              type='email'
+              class='form-control'
+              id='email'
+              name='email'
+              value={email}
+              placeholder='Enter your email'
+              onChange={onChange}
+              autocomplete="off"
+            />
+          </div>
+          <div class='form-group'>
+            <input
+              type='password'
+              class='form-control'
+              id='password'
+              name='password'
+              value={password}
+              placeholder='Enter password'
+              onChange={onChange}
+              autocomplete="off"
+            />
+          </div>
+          <div class='form-group'>
+            <input
+              type='password'
+              class='form-control'
+              id='password2'
+              name='password2'
+              value={password2}
+              placeholder='Confirm password'
+              onChange={onChange}
+              autocomplete="off"
+            />
+          </div>
+          <div class='form-group'>
+            <button type='submit' class='btn btn-block'>
+              Create your account
+            </button>
+          </div>
         </form>
+      </section>
     </section>
+    <div class="adContainer">
+      <div class="AdvertisementImage">
+      <p class="advertisementInfo">Sponsored Advertisement</p>
+        <img src="https://blog.photoadking.com/wp-content/uploads/2021/01/1610011693867-1.png" alt="Advertisement" />
+      </div>
+    </div>
+  </div>
     </>
   )
 }
